@@ -12,7 +12,7 @@ export default function ItemCard({title, cuantity = 0, text, cost, imgUrl, updat
     };
 
     return (
-        <div className="column">
+        <div className="column is-3">
             <div class="card p-3">
                 <div class="card-image">
                     <figure class="image is-square">

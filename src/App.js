@@ -9,28 +9,32 @@ import Carousel from './components/shared/Carousel.js'
 const products = {
     tortillas:{
         title: "Tortillas",
-        text: "Tortillas de harina caseras",
+        text: "Tortillas de harina caseras y frescas",
         cost: 25,
         imgUrl: "img/tortillas.png",
     },
-    tortillas2:{
-        title: "Tortillas 2",
-        text: "Tortillas de harina caseras",
+    chilofrijol:{
+        title: "Chilofrijol",
+        text: "Rico frijol con puerco al estilo sinaloense",
         cost: 50,
-        imgUrl: "img/tortillas.png",
+        imgUrl: "img/chilofrijol.png",
     },
    GalletasDeAvena:{
         title: "Galleta de Avena",
         text: "Galletas de avena bien sabrosas uwu",
         cost: 10,
-        imgUrl: "img/tortillas.png",
+        imgUrl: "img/galletas.png",
     },
 }
 
 const sections = {
     carnicos: {
         text: 'Cárnicos',
-        products: ['tortillas', 'tortillas2']
+        products: ['chilofrijol']
+    },
+    tortillas: {
+        text: 'Tortillas',
+        products: ['tortillas']
     },
     galletas: {
         text: 'Galletas',
@@ -61,15 +65,7 @@ export default function HomePage() {
         return(
             <>
                 <h1 className="title is-3 has-text-centered">{thisCategory.text}</h1>
-                <Carousel
-                    class="columns"
-                    id={thisCategory.text}
-                    config={{
-                        navigationSwipe: true,
-                        slidesToScroll: 1,
-                        slidesToShow: 4,
-                        duration: 300
-                    }}>
+                <div className="columns">
                     {
                         thisCategory.products.map( productID => {
                             const product = products[productID];
@@ -81,7 +77,7 @@ export default function HomePage() {
                                 {...product}/>;
                         })
                     }
-                </Carousel>
+                </div>
             </>
         )
     }
@@ -96,6 +92,7 @@ export default function HomePage() {
                   <h1 className="title is-4">Catálogo</h1>
 
                   <Category category="carnicos"/>
+                  <Category category="tortillas"/>
                   <Category category="galletas"/>
                   
               </div>
