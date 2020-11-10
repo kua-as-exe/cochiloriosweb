@@ -4,7 +4,7 @@ import './css/App.css';
 import HomeCarousel from './components/HomeCarousel.js'
 import Navbar from './components/shared/Navbar';
 import ItemCard from './components/shared/ItemCard.js'
-import Carousel from './components/shared/Carousel.js'
+import TakeBill from './components/TakeBill';
 
 const products = {
     tortillas:{
@@ -84,19 +84,27 @@ export default function HomePage() {
 
     return (
         <div class="App">
-          <Navbar billCost={bill.cost}/>
-          <HomeCarousel/>
+            <Navbar billCost={bill.cost}/>
+            <HomeCarousel/>
 
-          <section className="section">
-              <div className="container">                    
-                  <h1 className="title is-4">Catálogo</h1>
+            <section className="section">
+                <div className="container">                    
+                    <h1 className="title is-4">Catálogo</h1>
 
-                  <Category category="carnicos"/>
-                  <Category category="tortillas"/>
-                  <Category category="galletas"/>
-                  
-              </div>
-          </section>
+                    <Category category="carnicos"/>
+                    <Category category="tortillas"/>
+                    <Category category="galletas"/>
+                    
+                </div>
+            </section>
+
+            <section className="section">
+                <div className="container">
+                <p className="title is-3">Realiza tu pedido!</p>
+                    <TakeBill bill={bill}/>
+                </div>
+            </section>
+
           <pre>
               {JSON.stringify(bill, null, 2)}
           </pre>

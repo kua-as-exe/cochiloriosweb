@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { FaPlus, FaMinus } from 'react-icons/fa';
+
 export default function ItemCard({title, cuantity = 0, text, cost, imgUrl, updateBillProduct, id}) {
 
     const add = () => {
@@ -25,9 +27,9 @@ export default function ItemCard({title, cuantity = 0, text, cost, imgUrl, updat
                     <p className="subtitle is-6">${cost}</p>
                 </div>
                 <footer class="card-footer disable-select">
-                    <a class="card-footer-item" onClick={dis}>-</a>
+                    <a class="card-footer-item" onClick={dis}><FaMinus/></a>
                     <span class="card-footer-item has-text-weight-semibold">{cuantity}</span>
-                    <a class="card-footer-item" onClick={add}>+</a>
+                    <a class="card-footer-item" onClick={add}><FaPlus/></a>
                 </footer>
             </div>
         </div>

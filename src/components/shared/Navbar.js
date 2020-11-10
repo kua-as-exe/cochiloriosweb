@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import { FaShoppingCart } from 'react-icons/fa';
+
 export default function Navbar({billCost}) {
 
     const [isActive, setIsActive] = useState(false)
@@ -18,6 +20,15 @@ export default function Navbar({billCost}) {
         </a>
     )
 
+    const CostBadge = () => (
+        <div className="navbar-item">
+            <button class="button tag is-primary is-medium">
+                ${billCost}
+                <FaShoppingCart className="ml-1"/>
+            </button>                    
+        </div>
+    )
+
     return (
         <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
@@ -26,13 +37,7 @@ export default function Navbar({billCost}) {
                 </a>
 
                 <div className="navbar-end is-hidden-desktop">
-                <div className="navbar-item">
-
-                    <span class="tag is-primary is-medium">
-                    ${billCost}
-                    </span>                    
-                   
-                </div>
+                    <CostBadge/>
                 </div>
                 <ExpandButton/>
             </div>
@@ -58,13 +63,7 @@ export default function Navbar({billCost}) {
                 </div>
 
                 <div className="navbar-end is-hidden-tablet-only is-hidden-touch">
-                <div className="navbar-item">
-
-                    <span class="tag is-primary is-medium">
-                    ${billCost}
-                    </span>                    
-                   
-                </div>
+                    <CostBadge/>
                 </div>
             </div>
             </nav>
