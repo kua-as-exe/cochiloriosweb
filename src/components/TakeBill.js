@@ -127,7 +127,7 @@ function TakeBill({bill}) {
 }
 
 TakeBill.propTypes = {
-    bill: PropTypes.object.isRequired()
+    bill: PropTypes.object.isRequired
 }
 
 export default TakeBill
