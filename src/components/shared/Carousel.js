@@ -1,4 +1,5 @@
 import React, { useLayoutEffect } from 'react';
+import PropTypes from 'prop-types';
 import bulmaCarousel from 'bulma-carousel/dist/js/bulma-carousel.min.js';
 
 export default function Carousel(props) {
@@ -14,6 +15,7 @@ export default function Carousel(props) {
 }
 
 Carousel.propTypes = {
-
+    id: PropTypes.string.isRequired,
+    config: PropTypes.object.isRequired
 }
 

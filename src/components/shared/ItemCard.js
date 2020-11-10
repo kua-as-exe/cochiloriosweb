@@ -1,22 +1,33 @@
 import React from 'react'
 
-export default function ItemCard() {
+export default function ItemCard({title, cuantity = 0, text, cost, imgUrl, updateBillProduct, id}) {
+
+    const add = () => {
+        console.log(cuantity)
+        updateBillProduct(1, id);
+    };
+    const dis = () => {
+        if(cuantity <= 0) return;
+        updateBillProduct(-1, id);
+    };
+
     return (
         <div className="column">
-            <div class="card">
-                <div className="card-header">
-                    <p className="card-header-title is-centered">Hola</p>
-                </div>
+            <div class="card p-3">
                 <div class="card-image">
                     <figure class="image is-square">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
+                        <img src={imgUrl} alt={title}/>
                     </figure>
                 </div>
-                <div class="card-content has-text-centered" style={{padding: '10px 0px'}}>
-                    <p className="title is-5">Titulo</p>
+                <div class="card-content has-text-centered p-1">
+                    <p className="title is-5">{title}</p>
+                    <p className="subtitle mb-1"><small>{text}</small></p>
+                    <p className="subtitle is-6">${cost}</p>
                 </div>
-                <footer class="card-footer">
-                    <a href="#" class="card-footer-item">Ver más</a>
+                <footer class="card-footer disable-select">
+                    <a class="card-footer-item" onClick={dis}>-</a>
+                    <span class="card-footer-item has-text-weight-semibold">{cuantity}</span>
+                    <a class="card-footer-item" onClick={add}>+</a>
                 </footer>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Carousel from './Carousel'
+import Carousel from './shared/Carousel'
 
 const HeroCarouselItem = (props) => {
 
@@ -36,7 +36,7 @@ export default function HomeCarousel() {
                 <HeroCarouselItem imgUrl="img/IMG_20200918_091951.jpg">
                     <div class="container">
                         <h1 class="title">
-                            Fullheight title XD
+                            Hola familia
                         </h1>
                         <h2 class="subtitle">
                             Fullheight subtitle

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Navbar() {
+export default function Navbar({billCost}) {
 
     const [isActive, setIsActive] = useState(false)
     
@@ -19,12 +19,21 @@ export default function Navbar() {
     )
 
     return (
-        <nav className="navbar" role="navigation" aria-label="main navigation">
+        <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className="navbar-item" href="https://bulma.io">
-                    <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"/>
+                <a className="navbar-item" href="/">
+                    <img src="img/logo-cochilorios.png" width="150"/>
                 </a>
 
+                <div className="navbar-end is-hidden-desktop">
+                <div className="navbar-item">
+
+                    <span class="tag is-primary is-medium">
+                    ${billCost}
+                    </span>                    
+                   
+                </div>
+                </div>
                 <ExpandButton/>
             </div>
 
@@ -48,16 +57,13 @@ export default function Navbar() {
                 
                 </div>
 
-                <div className="navbar-end">
+                <div className="navbar-end is-hidden-tablet-only is-hidden-touch">
                 <div className="navbar-item">
-                    <div className="buttons">
-                    <a className="button is-primary">
-                        <strong>Sign up</strong>
-                    </a>
-                    <a className="button is-light">
-                        Log in
-                    </a>
-                    </div>
+
+                    <span class="tag is-primary is-medium">
+                    ${billCost}
+                    </span>                    
+                   
                 </div>
                 </div>
             </div>
