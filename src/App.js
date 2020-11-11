@@ -5,41 +5,46 @@ import HomeCarousel from './components/HomeCarousel.js'
 import Navbar from './components/shared/Navbar';
 import ItemCard from './components/shared/ItemCard.js'
 import TakeBill from './components/TakeBill';
+import { products, sections, WhatsappNumber } from './data';
 
-const products = {
-    tortillas:{
-        title: "Tortillas",
-        text: "Tortillas de harina caseras y frescas",
-        cost: 25,
-        imgUrl: "img/tortillas.png",
-    },
-    chilofrijol:{
-        title: "Chilofrijol",
-        text: "Rico frijol con puerco al estilo sinaloense",
-        cost: 50,
-        imgUrl: "img/chilofrijol.png",
-    },
-   GalletasDeAvena:{
-        title: "Galleta de Avena",
-        text: "Galletas de avena bien sabrosas uwu",
-        cost: 10,
-        imgUrl: "img/galletas.png",
-    },
+function getLinkWhastapp(number, message) {
+    var url = 'https://api.whatsapp.com/send?phone=' 
+       + number 
+       + '&text=' 
+       + encodeURIComponent(message)
+  
+    return url
+  }
+
+const getWhatsappMessage = (clientData, bill) => {
+    const {name, tel, direction, comments} = clientData;
+    let products = [];
+
+    Object.values(bill.products).forEach(product => {
+        if(product.cuantity > 0){
+            products.push(`    - ${product.cuantity} | ${product.title}`)
+        }
+    })
+    products = products.join('\n');
+    
+
+    return (`
+*COChilorios* 🐷
+ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    Pedido de: *${name}*
+    Contacto:  ${tel}
+    
+    Dirección: ${direction}
+ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+ *Pedido:*
+${products}
+
+ *Costo: $${bill.cost}*
+${
+   comments && `*Comentarios:*
+      _${comments}_`
 }
-
-const sections = {
-    carnicos: {
-        text: 'Cárnicos',
-        products: ['chilofrijol']
-    },
-    tortillas: {
-        text: 'Tortillas',
-        products: ['tortillas']
-    },
-    galletas: {
-        text: 'Galletas',
-        products: ["GalletasDeAvena"]
-    }
+`)
 }
 
 export default function HomePage() {
@@ -58,14 +63,19 @@ export default function HomePage() {
 
         setbill(newBill);
     }
-
     const Category = ({category}) => {
         const thisCategory = sections[category];
         if(!(thisCategory && thisCategory.products && thisCategory.products.length > 0)) return <></>
         return(
-            <>
-                <h1 className="title is-3 has-text-centered">{thisCategory.text}</h1>
-                <div className="columns">
+            <div className="">
+                <BgImgHero
+                    is="is-small"
+                    dark={true}
+                    size="is-3"
+                    img="img/banners/catalogo.jpg"
+                    title={thisCategory.text}/>
+
+                <div className="columns mt-1">
                     {
                         thisCategory.products.map( productID => {
                             const product = products[productID];
@@ -78,36 +88,67 @@ export default function HomePage() {
                         })
                     }
                 </div>
-            </>
+                <hr/>
+            </div>
         )
     }
+    const handleTakeBill = (clientData) => {
+        console.log(clientData);
+        const message = getWhatsappMessage(clientData, bill)
+        console.log(message)
+        const whatsLink = getLinkWhastapp(WhatsappNumber, message);
+        window.open(whatsLink);
+    }
+
+    const BgImgHero = ({img, title, subtitle, dark = false, is = "", size = ""}) => (
+        <div className={`hero ${dark?'is-dark': ''} ${is}`} style={{
+                background: 'url("'+img+'")',
+                backgroundSize: 'cover',
+                backgroundPositionY: 'center',
+                backgroundPositionX: 'center',
+            }}>
+
+            <div className="hero-body">
+            <div className="container">
+                {title && <p className={`title ${size}`}>{title}</p>}
+                {subtitle && <p className={`subtitle ${size}`}>{subtitle}</p>}
+            </div>
+            </div>
+        </div>
+    )
 
     return (
-        <div class="App">
+        <div className="App">
             <Navbar billCost={bill.cost}/>
             <HomeCarousel/>
 
-            <section className="section">
-                <div className="container">                    
-                    <h1 className="title is-4">Catálogo</h1>
+            <section className="section" id='catalogo'>
+                <div className="container mt-5">
+                    <div className="box">
+
+                    <BgImgHero
+                        //is="is-medium
+                        size="is-2"
+                        dark={true}
+                        img="img/banners/catalogo.jpg"
+                        title="Catálogo"/>
 
                     <Category category="carnicos"/>
-                    <Category category="tortillas"/>
+                    <Category category="tamales"/>
                     <Category category="galletas"/>
-                    
+                    <Category category="tortillas"/>
+                    </div>
                 </div>
             </section>
 
-            <section className="section">
-                <div className="container">
+            <section className="section" id='pedido'>
+                <div className="container mt-5">
                 <p className="title is-3">Realiza tu pedido!</p>
-                    <TakeBill bill={bill}/>
+                    <TakeBill 
+                        bill={bill}
+                        takeBill={handleTakeBill}/>
                 </div>
             </section>
-
-          <pre>
-              {JSON.stringify(bill, null, 2)}
-          </pre>
-      </div>
+        </div>
     )
 }

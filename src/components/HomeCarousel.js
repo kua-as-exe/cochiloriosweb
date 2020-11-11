@@ -4,7 +4,7 @@ import Carousel from './shared/Carousel'
 const HeroCarouselItem = (props) => {
 
     return (
-        <div class='carousel-item hero is-fullheight-with-navbar has-background'
+        <div className='carousel-item hero is-fullheight-with-navbar has-background'
             style={{
                 backgroundSize: 'cover',
                 backgroundPositionY: 'center',
@@ -19,7 +19,7 @@ const HeroCarouselItem = (props) => {
 }
 export default function HomeCarousel() {
     return (
-        <section class="hero is-fullheight-with-navbar has-carousel is-primary">
+        <section className="hero is-fullheight-with-navbar has-carousel is-primary">
             <Carousel
                 id="Presentation"
                 isHero={true}
@@ -34,51 +34,51 @@ export default function HomeCarousel() {
                     pauseOnHover: true,
                 }}>
                 <HeroCarouselItem imgUrl="img/IMG_20200918_091951.jpg">
-                    <div class="container">
-                        <h1 class="title">
+                    <div className="container">
+                        <h1 className="title">
                             Hola familia
                         </h1>
-                        <h2 class="subtitle">
+                        <h2 className="subtitle">
                             Fullheight subtitle
                         </h2>
                     </div>
                 </HeroCarouselItem>
                 <HeroCarouselItem imgUrl="img/IMG_20201004_130834.jpg">
-                    <div class="container">
-                        <h1 class="title">
+                    <div className="container">
+                        <h1 className="title">
                             Fullheight title
                         </h1>
-                        <h2 class="subtitle">
+                        <h2 className="subtitle">
                             Fullheight subtitle
                         </h2>
                     </div>
                 </HeroCarouselItem>
                 <HeroCarouselItem imgUrl="img/IMG_20201014_184350.jpg">
-                    <div class="container">
-                        <h1 class="title">
+                    <div className="container">
+                        <h1 className="title">
                             Fullheight title
                         </h1>
-                        <h2 class="subtitle">
+                        <h2 className="subtitle">
                             Fullheight subtitle
                         </h2>
                     </div>
                 </HeroCarouselItem>
                 <HeroCarouselItem imgUrl="img/IMG_20201023_212514.jpg">
-                    <div class="container">
-                        <h1 class="title">
+                    <div className="container">
+                        <h1 className="title">
                             Fullheight title
                         </h1>
-                        <h2 class="subtitle">
+                        <h2 className="subtitle">
                             Fullheight subtitle
                         </h2>
                     </div>
                 </HeroCarouselItem>
                 <HeroCarouselItem imgUrl="img/IMG_20201026_211710.jpg">
-                    <div class="container">
-                        <h1 class="title">
+                    <div className="container">
+                        <h1 className="title">
                             Fullheight title
                         </h1>
-                        <h2 class="subtitle">
+                        <h2 className="subtitle">
                             Fullheight subtitle
                         </h2>
                     </div>

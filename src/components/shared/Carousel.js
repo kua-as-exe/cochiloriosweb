@@ -8,7 +8,7 @@ export default function Carousel(props) {
     }, [props.config])
 
     return (
-        <div id={props.id} class={props.isHero?"hero-carousel":"carousel"}>
+        <div id={props.id} className={props.isHero?"hero-carousel":"carousel"}>
             {props.children}
         </div>
     )

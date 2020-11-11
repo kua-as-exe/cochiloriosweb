@@ -22,17 +22,17 @@ export default function Navbar({billCost}) {
 
     const CostBadge = () => (
         <div className="navbar-item">
-            <button class="button tag is-primary is-medium">
+            <a className="button tag is-primary is-medium" href="#pedido">
                 ${billCost}
                 <FaShoppingCart className="ml-1"/>
-            </button>                    
+            </a>                    
         </div>
     )
 
     return (
         <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className="navbar-item" href="/">
+                <a className="navbar-item" href="#">
                     <img src="img/logo-cochilorios.png" width="150"/>
                 </a>
 
@@ -47,18 +47,17 @@ export default function Navbar({billCost}) {
                 className={`navbar-menu ${isActive? 'is-active': ''}`}>
 
                 <div className="navbar-start">
-                <a className="navbar-item">
+                <a className="navbar-item" href="#">
                     Inicio
                 </a>
 
-                <a className="navbar-item">
+                <a className="navbar-item" href="#catalogo">
                     Catálogo
                 </a>
 
-                <a className="navbar-item">
-                    Sobre nosotros
+                <a className="navbar-item" href="#pedido">
+                    Catálogo
                 </a>
-
                 
                 </div>
 
