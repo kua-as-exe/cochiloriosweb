@@ -1,15 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useForm } from "react-hook-form";
+import { dow, getNextDays, mfy } from '../tools/date';
+import { getHours } from '../tools/hour';
+import { minCost } from '../data';
+import { MobileView, BrowserView } from 'react-device-detect';
 
 function TakeBill({bill, takeBill}) {
-    const BillingListItem = (product) => (
-        <a className="panel-block is-active">
-            <span>{product.cuantity} de {product.title} (${product.cost*product.cuantity})</span>
+    const BillingListItem = ({cuantity, title, cost, id}) => (
+        <a className="panel-block is-active" href={`#catalogo-${id}`}>
+            <span>{cuantity} de {title} (${cost*cuantity})</span>
         </a>
     )
 
     const hasProducts = () => Object.values(bill.products).filter( product => product.cuantity > 0).length > 0
+
+    const able = () => hasProducts() && bill.cost >= minCost;
+
+    const NotEnoghCost = () => ( 
+        <a className="p-3 content is-active is-align-content-center disable-select" href="#catalogo">
+            <figure className="is-fullwidth mt-0">
+                <p className="title is-5">Oh oh. La compra mínima es de ${minCost}</p>
+                <p className="subtitle is-6 mb-1">Toca aquí para ir al catálogo</p>
+                <p className="subtitle is-6 mb-1"><em>para los viáticos hermano, sino no costea</em></p>
+                <img src="https://media.giphy.com/media/fKk2I5iiWGN0I/giphy.gif" alt="this slowpoke moves" className="is-fullWidth"/>
+            </figure>
+        </a>
+    )
 
     const BillingList = () => {
         return (
@@ -21,7 +38,7 @@ function TakeBill({bill, takeBill}) {
                     Object.keys(bill.products).map( productKey => {
                         const product = bill.products[productKey];
                         if(product.cuantity && product.cuantity > 0)
-                            return <BillingListItem key={productKey} {...product}/>
+                            return <BillingListItem key={productKey} id={productKey} {...product}/>
                         return <div key={productKey}></div>
                     })
                 }
@@ -35,6 +52,9 @@ function TakeBill({bill, takeBill}) {
                         </figure>
                     </a>
                 }
+                <BrowserView>
+                    {(hasProducts() && bill.cost < minCost) && <NotEnoghCost/>}
+                </BrowserView>
 
             </article>
         )
@@ -43,6 +63,22 @@ function TakeBill({bill, takeBill}) {
     const { register, handleSubmit } = useForm();
 
     const handleBill = (clientData) => takeBill(clientData);
+
+    const getAvailableDays = () => {
+        const days = getNextDays({ days: [5, 6, 0], weeks: 3 })
+        return days.map( day => {
+            const dayString = `${dow[day.getDay()]} ${day.getDate()} de ${mfy[day.getMonth()]}`
+            return(
+                <option key={day} value={dayString}>{dayString}</option>
+            )
+        })
+    }
+    const getAvailableHours = () => {
+        const hours = getHours();
+        return hours.map( hour => (
+            <option key={hour} value={hour}>{hour}</option>
+        ))
+    }
 
     return (
         <div className="columns">
@@ -60,10 +96,8 @@ function TakeBill({bill, takeBill}) {
                     <label className="label">📞 Tu teléfono:</label>
                     <div className="field has-addons">
                         <p className="control">
-                            <span className="select">
-                                <select>
-                                    <option>+52 (MX)</option>
-                                </select>
+                             <span className="button is-static">
+                                +52
                             </span>
                         </p>
                         <p className="control  is-expanded">
@@ -88,6 +122,27 @@ function TakeBill({bill, takeBill}) {
                         </div>
                     </div>
 
+                    <label className="label">📅 Fecha y hora de entrega:</label>
+                    <div className="field has-addons">
+                        <div className="control is-expanded">
+                            <div className="select is-fullwidth">
+                            <select name="date" ref={register({required: true})}>
+                                {getAvailableDays()}
+                            </select>
+                            </div>
+                        </div>
+                        <div className="control">
+                            <span className="button is-static">por las</span>
+                        </div>
+                        <div className="control">
+                            <div className="select">
+                            <select name="hour" ref={register({required: true})}>
+                                {getAvailableHours()}
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <label className="label">📌 Comentarios: (opcional)</label>
                     <div className="field">
                         <div className="control">
@@ -108,11 +163,14 @@ function TakeBill({bill, takeBill}) {
                             <div className="level-item ">
                                 <button 
                                     className="button is-primary"
-                                    disabled={!hasProducts()}
+                                    disabled={!able()}
                                     type="submit">De acuerdo</button>
                             </div>
                         </div>
                     </div>
+                    <MobileView>
+                        {(hasProducts() && bill.cost < minCost) && <NotEnoghCost/>}
+                    </MobileView>
                 </form>
 
 

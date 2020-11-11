@@ -21,7 +21,7 @@ export default function Navbar({billCost}) {
     )
 
     const CostBadge = () => (
-        <div className="navbar-item">
+        <div className="navbar-item ">
             <a className="button tag is-primary is-medium" href="#pedido">
                 ${billCost}
                 <FaShoppingCart className="ml-1"/>
@@ -29,14 +29,16 @@ export default function Navbar({billCost}) {
         </div>
     )
 
+    const exit = () => setIsActive(false);
+
     return (
         <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className="navbar-item" href="#">
+                <a className="navbar-item" href="#" onClick={exit}>
                     <img src="img/logo-cochilorios.png" width="150"/>
                 </a>
 
-                <div className="navbar-end is-hidden-desktop">
+                <div className="navbar-end is-hidden-desktop ">
                     <CostBadge/>
                 </div>
                 <ExpandButton/>
@@ -47,18 +49,17 @@ export default function Navbar({billCost}) {
                 className={`navbar-menu ${isActive? 'is-active': ''}`}>
 
                 <div className="navbar-start">
-                <a className="navbar-item" href="#">
-                    Inicio
-                </a>
+                    <a className="navbar-item" href="#" onClick={exit}>
+                        Inicio
+                    </a>
 
-                <a className="navbar-item" href="#catalogo">
-                    Catálogo
-                </a>
+                    <a className="navbar-item" href="#catalogo" onClick={exit}>
+                        Catálogo
+                    </a>
 
-                <a className="navbar-item" href="#pedido">
-                    Catálogo
-                </a>
-                
+                    <a className="navbar-item" href="#pedido" onClick={exit}>
+                        Mi pedido
+                    </a>
                 </div>
 
                 <div className="navbar-end is-hidden-tablet-only is-hidden-touch">

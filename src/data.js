@@ -83,4 +83,18 @@ export const sections = {
     }
 }
 
-export const WhatsappNumber = '+522215192686'
+
+export const minCost = 100;
+export const WhatsappNumber = '+5212222798807'
+export const whatsappMessageLabels = [
+    'Va, enviar',
+    'Vamos allá!',
+    'Quiero mi chilorio!'
+]
+export const orderModalTitleLabels = [
+    'Estamos listos! 🚀',
+    'Amonos! ✈',
+    'Se viene 🐷'
+]
+
+export const random = (list) => list[Math.floor((Math.random()*list.length))];

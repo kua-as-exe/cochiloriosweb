@@ -14,7 +14,7 @@ export default function ItemCard({title, cuantity = 0, text, cost, imgUrl, updat
     };
 
     return (
-        <div className="column is-3">
+        <section className="column is-3" id={`catalogo-${id}`}>
             <div className="card p-3">
                 <div className="card-image">
                     <figure className="image is-square">
@@ -34,6 +34,6 @@ export default function ItemCard({title, cuantity = 0, text, cost, imgUrl, updat
                     <a className="card-footer-item" onClick={add}><FaPlus/></a>
                 </footer>
             </div>
-        </div>
+        </section>
     )
 }

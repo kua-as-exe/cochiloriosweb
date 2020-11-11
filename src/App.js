@@ -6,51 +6,15 @@ import Navbar from './components/shared/Navbar';
 import ItemCard from './components/shared/ItemCard.js'
 import TakeBill from './components/TakeBill';
 import { products, sections, WhatsappNumber } from './data';
-
-function getLinkWhastapp(number, message) {
-    var url = 'https://api.whatsapp.com/send?phone=' 
-       + number 
-       + '&text=' 
-       + encodeURIComponent(message)
-  
-    return url
-  }
-
-const getWhatsappMessage = (clientData, bill) => {
-    const {name, tel, direction, comments} = clientData;
-    let products = [];
-
-    Object.values(bill.products).forEach(product => {
-        if(product.cuantity > 0){
-            products.push(`    - ${product.cuantity} | ${product.title}`)
-        }
-    })
-    products = products.join('\n');
-    
-
-    return (`
-*COChilorios* 🐷
- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    Pedido de: *${name}*
-    Contacto:  ${tel}
-    
-    Dirección: ${direction}
- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
- *Pedido:*
-${products}
-
- *Costo: $${bill.cost}*
-${
-   comments && `*Comentarios:*
-      _${comments}_`
-}
-`)
-}
+import Footer from './components/Footer';
+import OrderModal from './components/OrderModal';
 
 export default function HomePage() {
     const [bill, setbill] = useState({
         products: products,
-        cost: 0
+        cost: 0,
+        order: false,
+        clientData: {}
     });
     const handleUpdateCuantity = (cuantity, productID) => {
         const newBill = Object.assign({}, bill);
@@ -93,11 +57,19 @@ export default function HomePage() {
         )
     }
     const handleTakeBill = (clientData) => {
-        console.log(clientData);
-        const message = getWhatsappMessage(clientData, bill)
-        console.log(message)
-        const whatsLink = getLinkWhastapp(WhatsappNumber, message);
-        window.open(whatsLink);
+        const newBill = Object.assign({}, bill);
+        newBill.clientData = clientData;
+        newBill.order = true;
+        setbill(newBill);
+    }
+    const handleCloseBill = () => {
+        const newBill = Object.assign({}, bill);
+        newBill.order = false;
+        setbill(newBill);
+    }
+    const handleSendWhatsapp = () => {
+        const url = `https://api.whatsapp.com/send?phone=${WhatsappNumber}`
+        window.open(url);
     }
 
     const BgImgHero = ({img, title, subtitle, dark = false, is = "", size = ""}) => (
@@ -116,6 +88,22 @@ export default function HomePage() {
             </div>
         </div>
     )
+    const WhatsappButton = () => (
+        <a className="box notification is-success disable-select" onClick={handleSendWhatsapp}>
+            <article class="media">
+                <figure class="media-left">
+                    <p class="image is-32x32">
+                        <img src="img/whatsappicon.png"/>
+                    </p>
+                </figure>
+                <div class="media-content">
+                    <div class="content">
+                        <p className="is-size-6">Click aquí para pedidos especiales, verificar si aún hay productos en stock, o alguna otra cuestión del ministerio de magia 🔮</p>
+                    </div>
+                </div>
+            </article>
+        </a>
+    )
 
     return (
         <div className="App">
@@ -124,14 +112,14 @@ export default function HomePage() {
 
             <section className="section" id='catalogo'>
                 <div className="container mt-5">
-                    <div className="box">
-
                     <BgImgHero
-                        //is="is-medium
+                        is="has-text-centered"
                         size="is-2"
                         dark={true}
                         img="img/banners/catalogo.jpg"
                         title="Catálogo"/>
+                    <div className="box">
+
 
                     <Category category="carnicos"/>
                     <Category category="tamales"/>
@@ -147,8 +135,14 @@ export default function HomePage() {
                     <TakeBill 
                         bill={bill}
                         takeBill={handleTakeBill}/>
+
+                    <OrderModal 
+                        bill={bill}
+                        close={handleCloseBill}/>
+                    <WhatsappButton/>
                 </div>
             </section>
+            <Footer/>
         </div>
     )
 }
