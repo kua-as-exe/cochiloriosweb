@@ -1,6 +1,17 @@
 import React, { useState } from 'react'
+import { BrowserView, MobileView } from 'react-device-detect';
 
 import { FaShoppingCart } from 'react-icons/fa';
+//import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
+import { cochiloriosNavbarLogo } from '../../data';
+
+const links = [
+    {text:'Inicio', to:"/#"}, 
+    {text:'Catálogo', to:"/#catalogo"}, 
+    {text:'Mi pedido', to:"/#pedido"}, 
+    {text:'Galería', to:"/galeria"}, 
+]
 
 export default function Navbar({billCost}) {
 
@@ -21,26 +32,39 @@ export default function Navbar({billCost}) {
     )
 
     const CostBadge = () => (
-        <div className="navbar-item ">
-            <a className="button tag is-primary is-medium" href="#pedido">
-                ${billCost}
-                <FaShoppingCart className="ml-1"/>
-            </a>                    
-        </div>
+        <>{ 
+            billCost !== undefined && 
+            <div className="navbar-end navbar-item">
+                <Link className="button tag is-primary is-medium" to="/#pedido">
+                    ${billCost}
+                    <FaShoppingCart className="ml-1"/>
+                </Link>                                       
+            </div>
+        }</>
     )
 
     const exit = () => setIsActive(false);
+    const Links = () => {
+        return links.map( link => (
+            <Link className="navbar-item" 
+                to={link.to}
+                key={link.to}
+                onClick={exit}>
+                {link.text}
+            </Link>
+        ))
+    }
 
     return (
         <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className="navbar-item" href="#" onClick={exit}>
-                    <img src="img/logo-cochilorios.png" width="150"/>
-                </a>
+                <Link className="navbar-item" to="/#" onClick={exit}>
+                    <img src={cochiloriosNavbarLogo} width="150"/>
+                </Link>
 
-                <div className="navbar-end is-hidden-desktop ">
+                <MobileView>
                     <CostBadge/>
-                </div>
+                </MobileView>
                 <ExpandButton/>
             </div>
 
@@ -49,22 +73,12 @@ export default function Navbar({billCost}) {
                 className={`navbar-menu ${isActive? 'is-active': ''}`}>
 
                 <div className="navbar-start">
-                    <a className="navbar-item" href="#" onClick={exit}>
-                        Inicio
-                    </a>
-
-                    <a className="navbar-item" href="#catalogo" onClick={exit}>
-                        Catálogo
-                    </a>
-
-                    <a className="navbar-item" href="#pedido" onClick={exit}>
-                        Mi pedido
-                    </a>
+                    <Links/>
                 </div>
 
-                <div className="navbar-end is-hidden-tablet-only is-hidden-touch">
+                <BrowserView>
                     <CostBadge/>
-                </div>
+                </BrowserView>
             </div>
             </nav>
     )

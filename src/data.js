@@ -1,6 +1,25 @@
+export const homePageLogo = "img/logo.png";
+export const whatsappLogoUrl = "img/whatsappicon.png";
+export const cochiloriosNavbarLogo = "img/logo-cochilorios.png";
+
+export const minCost = 100;
+export const WhatsappNumber = '+5212222798807'
+export const whatsappMessageLabels = [
+    'Va, enviar',
+    'Vamos allá!',
+    'Quiero mi chilorio!'
+]
+export const orderModalTitleLabels = [
+    'Estamos listos! 🚀',
+    'Amonos! ✈',
+    'Ya viene 🐷, ya le marqué a su nextel 📱'
+]
+
+export const random = (list) => list[Math.floor((Math.random()*list.length))];
+
 export const products = {
-    chilofrijol:{
-        title: "Chilofrijol",
+    frijolesConChorizo:{
+        title: "Frijoles con chorizo",
         unit: 'bote de 250g',
         text: "Rico frijol con puerco al estilo sinaloense",
         cost: 50,
@@ -67,34 +86,41 @@ export const products = {
 export const sections = {
     carnicos: {
         text: 'Cárnicos',
-        products: ['chilorio', 'chorizo', 'chilofrijol']
+        products: ['chilorio', 'chorizo']
     },
-    tortillas: {
-        text: 'Tortillas',
-        products: ['tortillas']
+    harinasYPostres: {
+        text: 'Harinas y Postres',
+        products: ['tortillas', "GalletasDeAvena", 'coricos']
     },
-    galletas: {
-        text: 'Galletas',
-        products: ["GalletasDeAvena", 'coricos']
-    },
-    tamales: {
-        text: 'Tamales',
-        products: ["tamalDulce", 'tamalRajas', 'tamalChilorio']
+    deLaHornilla: {
+        text: 'De la hornilla',
+        products: ["tamalDulce", 'tamalRajas', 'tamalChilorio', 'frijolesConChorizo']
     }
 }
-
-
-export const minCost = 100;
-export const WhatsappNumber = '+5212222798807'
-export const whatsappMessageLabels = [
-    'Va, enviar',
-    'Vamos allá!',
-    'Quiero mi chilorio!'
+export const homeCarouselItems = [
+    {
+        img: "img/IMG_20200918_091951.jpg",
+        title: "Hola familia",
+        subtitle: "A",
+    },
+    {
+        img: "img/IMG_20201004_130834.jpg",
+        title: "Fullheight title",
+        subtitle: "B",
+    },
+    {
+        img: "img/IMG_20201014_184350.jpg",
+        title: "Fullheight title",
+        subtitle: "C",
+    },
+    {
+        img: "img/IMG_20201023_212514.jpg",
+        title: "Fullheight title",
+        subtitle: "D",
+    },
+    {
+        img: "img/IMG_20201026_211710.jpg",
+        title: "Fullheight title",
+        subtitle: "E",
+    },
 ]
-export const orderModalTitleLabels = [
-    'Estamos listos! 🚀',
-    'Amonos! ✈',
-    'Se viene 🐷'
-]
-
-export const random = (list) => list[Math.floor((Math.random()*list.length))];
