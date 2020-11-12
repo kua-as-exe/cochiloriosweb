@@ -22,7 +22,7 @@ function TakeBill({bill, takeBill}) {
             <figure className="is-fullwidth mt-0">
                 <p className="title is-5">Oh oh. La compra mínima es de ${minCost}</p>
                 <p className="subtitle is-6 mb-1">Toca aquí para ir al catálogo</p>
-                <p className="subtitle is-6 mb-1"><em>para los viáticos hermano, sino no costea</em></p>
+                <p className="subtitle is-6 mb-1"><em>para los viáticos hermano, sino no sale bro </em>🤷‍♀️</p>
                 <img src="https://media.giphy.com/media/fKk2I5iiWGN0I/giphy.gif" alt="this slowpoke moves" className="is-fullWidth"/>
             </figure>
         </a>
@@ -65,7 +65,7 @@ function TakeBill({bill, takeBill}) {
     const handleBill = (clientData) => takeBill(clientData);
 
     const getAvailableDays = () => {
-        const days = getNextDays({ days: [5, 6, 0], weeks: 3 })
+        const days = getNextDays({ days: [5, 6, 0], weeks: 2 })
         return days.map( day => {
             const dayString = `${dow[day.getDay()]} ${day.getDate()} de ${mfy[day.getMonth()]}`
             return(
@@ -164,7 +164,7 @@ function TakeBill({bill, takeBill}) {
                                 <button 
                                     className="button is-primary"
                                     disabled={!able()}
-                                    type="submit">De acuerdo</button>
+                                    type="submit">¡Quiero mi comida!</button>
                             </div>
                         </div>
                     </div>

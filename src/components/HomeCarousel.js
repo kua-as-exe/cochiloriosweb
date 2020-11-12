@@ -1,49 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { MobileView } from 'react-device-detect'
+import { homeCarouselConfig, homeCarouselItems } from '../data'
 import Carousel from './shared/Carousel'
-
-const HeroCarouselItem = ({children, imgUrl}) => (
-    <div className='carousel-item hero is-fullheight-with-navbar has-background'
-        style={{
-            backgroundSize: 'cover',
-            backgroundPositionY: 'center',
-            backgroundPositionX: 'center',
-            backgroundImage: `url('${imgUrl}')`
-            }}>
-        <div className="hero-body">
-            <>{children}</>
+let carouselClass = 'is-fullheight-with-navbar'
+const HeroCarouselItem = ({children, imgUrl, item}) => {
+    return(
+        <div className='carousel-item hero is-fullheight-with-navbar has-background'
+            style={{
+                backgroundSize: 'cover',
+                backgroundPositionY: 'center',
+                backgroundPositionX: 'center',
+                backgroundImage: `url('${imgUrl}')`
+                }}>
+            <div className="hero-body">
+                <>{children}</>
+                
+            </div>
         </div>
-    </div>
-)
+    )
+}
 
 
-const HeroCarousel = ({items = [{img, title, subtitle, text}]}) => {
-    return items.map( ({img, title, subtitle, text}) => (
-        <HeroCarouselItem imgUrl={img}>
-            <div className="container">
-                { title && <p className="title">{title}</p>}
-                { subtitle && <p className="subtitle">{subtitle}</p>}
+const HeroCarousel = ({items}) => {
+    return items.map( (item) => {
+        console.log(item)
+        const {img, subtitle, text, title} = item;
+        return (
+        <HeroCarouselItem key={img} imgUrl={img} item={item}>
+            <div className="container ">
+                { title && <p className="title has-text-white">{title}</p>}
+                { subtitle && <p className="title is-5 has-text-white has-text-right">{subtitle}</p>}
                 { text && <p>{text}</p>}
             </div>
-        </HeroCarouselItem>
-    ))
+        </HeroCarouselItem>)
+    })
 }
 
 export default function HomeCarousel() {
+
     return (
-        <section className="hero is-fullheight-with-navbar has-carousel is-primary">
+        <section className={`hero ${carouselClass} has-carousel`}>
             <Carousel
                 id="Presentation"
                 isHero={true}
-                config={{
-                    navigationSwipe: true,
-                    slidesToScroll: 1,
-                    slidesToShow: 1,
-                    infinite: true,
-                    duration: 300,
-                    autoplay: true,
-                    autoplaySpeed: 5000,
-                    pauseOnHover: true,
-                }}>
+                config={homeCarouselConfig}>
+                
                 <HeroCarousel items={homeCarouselItems}/>
             </Carousel>
         </section>

@@ -5,6 +5,9 @@
   background-size: cover;
   background-position: 50% 50%; }
 
+.hero-carousel p {
+  text-shadow: 0px 2px 6px black; }
+
 .disable-select {
   user-select: none;
   /* supported by Chrome and Opera */

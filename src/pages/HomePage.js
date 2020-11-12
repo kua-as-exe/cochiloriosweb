@@ -37,7 +37,7 @@ export default function HomePage() {
                     img="img/banners/catalogo.jpg"
                     title={thisCategory.text}/>
 
-                <div className="columns mt-1">
+                <div className="columns mt-1 is-multiline">
                     {
                         thisCategory.products.map( productID => {
                             const product = products[productID];
@@ -96,7 +96,7 @@ export default function HomePage() {
                 </figure>
                 <div class="media-content">
                     <div class="content">
-                        <p className="is-size-6">Click aquí para pedidos especiales, verificar si aún hay productos en stock, o alguna otra cuestión del ministerio de magia 🔮</p>
+                        <p className="is-size-6">Click aquí para pedidos especiales, consultas previas a realizar un pedido, verificar si aún hay productos en stock, una duda, o alguna cuestión del ministerio de magia 🔮</p>
                     </div>
                 </div>
             </article>

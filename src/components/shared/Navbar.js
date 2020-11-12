@@ -10,7 +10,7 @@ const links = [
     {text:'Inicio', to:"/#"}, 
     {text:'Catálogo', to:"/#catalogo"}, 
     {text:'Mi pedido', to:"/#pedido"}, 
-    {text:'Galería', to:"/galeria"}, 
+    //{text:'Galería', to:"/galeria"}, 
 ]
 
 export default function Navbar({billCost}) {

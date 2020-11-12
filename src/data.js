@@ -1,5 +1,5 @@
 export const homePageLogo = "img/logo.png";
-export const whatsappLogoUrl = "img/whatsappicon.png";
+export const whatsappLogoUrl = "img/misc/whatsappicon.png";
 export const cochiloriosNavbarLogo = "img/logo-cochilorios.png";
 
 export const minCost = 100;
@@ -20,42 +20,56 @@ export const random = (list) => list[Math.floor((Math.random()*list.length))];
 export const products = {
     frijolesConChorizo:{
         title: "Frijoles con chorizo",
-        unit: 'bote de 250g',
-        text: "Rico frijol con puerco al estilo sinaloense",
+        unit: 'Bote de 500g',
+        text: "Rico frijol con chorizo de la casa",
         cost: 50,
         imgUrl: "img/productos/chilofrijol.png",
     },
+    chilorioConPapas:{
+        title: "Chilorio con papas",
+        unit: 'Bote de 500g',
+        text: "Chilorio con papas guisado a la mexicana",
+        cost: 70,
+        imgUrl: "img/productos/chilorioconpapas.png",
+    },
+    chorizoConPapas:{
+        title: "Chorizo con papas",
+        unit: 'Bote de 500g',
+        text: "Chorizo con papas guisado a la mexicana",
+        cost: 60,
+        imgUrl: "img/productos/chorizoconpapas.png",
+    },
     chilorio:{
         title: "Chilorio",
-        unit: 'bote de 250g',
+        unit: 'Bote de 250g',
         text: "De pierna de puerco, con poca grasa, especias y chiles secos!",
         cost: 50,
         imgUrl: "img/productos/chilorio.png",
     },
     chorizo:{
         title: "Chorizo",
-        unit: 'bolsa de 200g',
-        text: "De pierna de puerco, con poca grasa, especias y chiles secos!",
-        cost: 20,
+        unit: 'Bolsa de 200g',
+        text: "De pierna de puerco 80-20, especias y chiles secos",
+        cost: 25,
         imgUrl: "img/productos/chorizo.png",
     },
     GalletasDeAvena:{
         title: "Galleta de Avena",
-        unit: "bolsa de 3 piezas",
+        unit: "Bolsa de 3 piezas",
         text: "Galletas de avena bien sabrosas uwu",
         cost: 10,
         imgUrl: "img/productos/GalletasDeAvena.png",
     },
     coricos:{
         title: "Coricos",
-        unit: "bolsa de 6 piezas",
+        unit: "Bolsa de 6 piezas",
         text: "Tradicionales galletas de harina de maiz, dulces y crujientes!",
         cost: 10,
         imgUrl: "img/productos/coricos.png",
     },
     tortillas:{
         title: "Tortillas de harina",
-        unit: "bolsa de 15 piezas (500g)",
+        unit: "Bolsa de 15 piezas (500g)",
         text: "Tortillas de harina caseras y frescas",
         cost: 25,
         imgUrl: "img/productos/tortillas.png",
@@ -69,15 +83,15 @@ export const products = {
     },
     tamalRajas:{
         title: "Tamal de Rajas con queso",
-        unit: 'Paquete: 1 tamal (130g)',
+        unit: 'Paquete: 1 tamal (145g)',
         text: "El queso es chihuahua y las rajas son poblanas",
         cost: 16,
         imgUrl: "img/productos/tamalRajas.png",
     },
     tamalChilorio:{
         title: "Tamal de Chilorio",
-        unit: 'Paquete: 1 tamal (130g)',
-        text: "Relleno con chilorio guizado a la mxicana",
+        unit: 'Paquete: 1 tamal (150g)',
+        text: "Relleno con chilorio guisado a la mexicana",
         cost: 16,
         imgUrl: "img/productos/tamalChilorio.png",
     },
@@ -89,38 +103,120 @@ export const sections = {
         products: ['chilorio', 'chorizo']
     },
     harinasYPostres: {
-        text: 'Harinas y Postres',
+        text: 'De Harinas y Postres',
         products: ['tortillas', "GalletasDeAvena", 'coricos']
     },
     deLaHornilla: {
         text: 'De la hornilla',
-        products: ["tamalDulce", 'tamalRajas', 'tamalChilorio', 'frijolesConChorizo']
+        products: ["tamalDulce", 'tamalRajas', 'tamalChilorio', 'frijolesConChorizo', 'chilorioConPapas', 'chorizoConPapas']
     }
+}
+
+export const homeCarouselConfig = {
+    //navigationSwipe: true,
+    slidesToScroll: 1,
+    slidesToShow: 1,
+    infinite: true,
+    duration: 300,
+    //pauseOnHover: true,
+    autoplaySpeed: 4000,
+    autoplay: true,
 }
 export const homeCarouselItems = [
     {
-        img: "img/IMG_20200918_091951.jpg",
-        title: "Hola familia",
-        subtitle: "A",
+      "img": "img/carrusel/A.JPG",
+      "title": "Bienvenido a Cochilorios",
+      "subtitle": "Chilorio en bote de 250g",
+      "text": ""
     },
     {
-        img: "img/IMG_20201004_130834.jpg",
-        title: "Fullheight title",
-        subtitle: "B",
+      "img": "img/carrusel/B.JPG",
+      "title": "En esta página",
+      "subtitle": "Huevos con chilorio",
+      "text": ""
     },
     {
-        img: "img/IMG_20201014_184350.jpg",
-        title: "Fullheight title",
-        subtitle: "C",
+      "img": "img/carrusel/C.png",
+      "title": "Encontrarás nuestro catálogo de",
+      "subtitle": "Frijoles con Chorizo, Chilorio y tortillas de harina",
+      "text": ""
     },
     {
-        img: "img/IMG_20201023_212514.jpg",
-        title: "Fullheight title",
-        subtitle: "D",
+      "img": "img/carrusel/D.jpg",
+      "title": "PRODUCTOS ALIMENTICIOS",
+      "subtitle": "Tamales de Elote Dulces, con Rajas y Queso, y con Chilorio",
+      "text": ""
     },
     {
-        img: "img/IMG_20201026_211710.jpg",
-        title: "Fullheight title",
-        subtitle: "E",
+      "img": "img/carrusel/E.jpg",
+      "title": "Para que puedas",
+      "subtitle": "Galletas de Avena en el Horno",
+      "text": ""
     },
-]
+    {
+      "img": "img/carrusel/F.jpg",
+      "title": "Seleccionar y Pedir...",
+      "subtitle": "Chilorio, Frijoles con Chorizo y Tortillas de Harina",
+      "text": ""
+    },
+    {
+      "img": "img/carrusel/G.jpg",
+      "title": "Nosotros te la llevamos",
+      "subtitle": "Burritos de Chilorio",
+      "text": ""
+    },
+    {
+      "img": "img/carrusel/H.jpg",
+      "title": "Son Sabrosos Productos",
+      "subtitle": "Tamal de Chilorio",
+      "text": ""
+    },
+    {
+      "img": "img/carrusel/I.jpg",
+      "title": "Con un estilo Norteño...",
+      "subtitle": "Tamal de rajas con queso",
+      "text": ""
+    },
+    {
+      "img": "img/carrusel/J.jpg",
+      "title": "Escoge lo que se te antoje",
+      "subtitle": "Tamal de Elote Dulce",
+      "text": ""
+    },
+    {
+      "img": "img/carrusel/K.jpg",
+      "title": "Llena tus datos",
+      "subtitle": "Galletas de Avena y Coricos",
+      "text": ""
+    },
+    { //
+      "img": "img/carrusel/L.jpg",
+      "title": "Dinos la fecha y hora de entrega",
+      "subtitle": "Usamos ingredientes 100% Naturales",
+      "text": ""
+    },
+    {
+      "img": "img/carrusel/M.jpg",
+      "title": "Oprime \"Quiero mi Comida\"",
+      "subtitle": "Con métodos tradicionales",
+      "text": ""
+    },
+    { //
+      "img": "img/carrusel/N.jpg",
+      "title": "y entraremos en contacto contigo",
+      "subtitle": "Tacos de Chilorio con Frijol",
+      "text": ""
+    },
+    { //
+      "img": "img/carrusel/O.jpg",
+      "title": "por WhatsApp",
+      "subtitle": "Tortas de Chilorio con queso",
+      "text": ""
+    },
+    {
+      "img": "img/carrusel/P.png",
+      "title": "¡Nos vemos pronto!",
+      "subtitle": "Chilorio con Papas",
+      "text": ""
+    }
+  ]
