@@ -25,7 +25,8 @@
     "eject": "react-scripts eject",
     "css-build": "node-sass --omit-source-map-url src/css/App.scss src/css/App.css",
     "css-watch": "npm run css-build -- --watch",
-    "css-start": "npm run css-watch"
+    "css-start": "npm run css-watch",
+    "deploy": "firebase deploy"
   },
   "eslintConfig": {
     "extends": [

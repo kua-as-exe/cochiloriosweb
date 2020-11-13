@@ -124,13 +124,13 @@ export const homeCarouselConfig = {
 }
 export const homeCarouselItems = [
     {
-      "img": "img/carrusel/A.JPG",
+      "img": "img/carrusel/A.jpg",
       "title": "Bienvenido a Cochilorios",
       "subtitle": "Chilorio en bote de 250g",
       "text": ""
     },
     {
-      "img": "img/carrusel/B.JPG",
+      "img": "img/carrusel/B.jpg",
       "title": "En esta página",
       "subtitle": "Huevos con chilorio",
       "text": ""
