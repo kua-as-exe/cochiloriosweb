@@ -44,7 +44,7 @@ ${
 }
 
 function OrderModal({bill, close}) {
-    console.log(bill)
+    //console.log(bill)
     const message = getWhatsappMessage(bill);
     const handleOrderBill = () => {
         const link = getLinkWhastapp(WhatsappNumber, message);

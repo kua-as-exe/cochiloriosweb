@@ -23,12 +23,12 @@ const HeroCarouselItem = ({children, imgUrl, item}) => {
 
 const HeroCarousel = ({items}) => {
     return items.map( (item) => {
-        console.log(item)
-        const {img, subtitle, text, title} = item;
+        //console.log(item)
+        const {img, subtitle, text, title, size} = item;
         return (
         <HeroCarouselItem key={img} imgUrl={img} item={item}>
             <div className="container ">
-                { title && <p className="title has-text-white">{title}</p>}
+                { title && <p className={`title has-text-white ${size? "is-"+size: ""}`}>{title}</p>}
                 { subtitle && <p className="title is-5 has-text-white has-text-right">{subtitle}</p>}
                 { text && <p>{text}</p>}
             </div>

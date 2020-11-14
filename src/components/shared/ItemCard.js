@@ -72,7 +72,6 @@ export default function ItemCard({title, cuantity = 0, text, cost, imgUrl, updat
     const [ModalDetails, setModalDetails] = useState(false);
 
     const add = () => {
-        console.log(cuantity)
         updateBillProduct(1, id);
     };
     const dis = () => {

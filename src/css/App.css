@@ -8,6 +8,20 @@
 .hero-carousel p {
   text-shadow: 0px 2px 6px black; }
 
+.logoCochito {
+  margin-bottom: -3rem;
+  margin-top: -11.5rem; }
+
+@media only screen and (min-width: 768px) {
+  .logoCochito {
+    margin-bottom: -3rem;
+    margin-top: -10rem; } }
+
+@media only screen and (max-width: 350px) {
+  .hero-carousel .container {
+    margin-top: 0.8rem;
+    align-self: flex-start; } }
+
 .disable-select {
   user-select: none;
   /* supported by Chrome and Opera */

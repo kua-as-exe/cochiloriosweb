@@ -17,6 +17,8 @@ export default function HomePage() {
     const handleUpdateCuantity = (cuantity, productID) => {
         const newBill = Object.assign({}, bill);
         const product = newBill.products[productID];
+        if(cuantity >= 1 && product.cuantity >= 20) return;
+
         // cuantity could be "1" or "-1"
         if(product.cuantity === undefined)
             product.cuantity = 0;
@@ -108,7 +110,7 @@ export default function HomePage() {
             <Navbar billCost={bill.cost}/>
             <HomeCarousel/>
 
-            <div className="section pb-0 pt-0 level" style={{ marginBottom: '-3rem', marginTop: '-10rem'}}>
+            <div className="section pb-0 pt-0 level logoCochito">
                 <div className="level-item">
                     <figure>
                         <img className="image is-rounded" src={homePageLogo}/>    
